@@ -12,7 +12,6 @@ buttonValue.forEach(buttons => buttons.addEventListener("click",operate))
 
 function operate(event){
     const value = event.target.textContent
-    console.log(value)
 
     switch(value){
         case "0":
@@ -140,15 +139,23 @@ function operate(event){
             operator = ""
             nextNumFlag = false
             screen.textContent = 0
+            break;
+        case "del":
+            if(!nextNumFlag){
+                num1 = String(num1).slice(0,-1)
+                screen.textContent = num1
+            } else {
+                num2 = String(num2).slice(0,-1)
+                screen.textContent = num2
+            }
+            break;
     }
     if (num1){
         num1 = parseFloat(num1)
-        console.log("num1: ",num1)
     }
 
     if (num2){
         num2 = parseFloat(num2)
-        console.log("num2: ",num2)
     }
 
     if (equalPressed){
@@ -166,11 +173,10 @@ function operate(event){
                 if (num2 != 0){
                     answer = num1 / num2
                 } else {
-                    alert("ERROR: Can't divide by zero")
+                    answer = "ERROR"
                 }
                 break;
         }
-        console.log("Answer: ", answer)
         screen.textContent = answer
         equalPressed = false
         nextNumFlag = false
