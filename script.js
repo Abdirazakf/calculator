@@ -113,6 +113,25 @@ function operate(event){
                 screen.textContent = num2
             }
             break;
+        case "%":
+            if(!nextNumFlag){
+                num1 = (parseFloat(num1)/100).toString()
+                screen.textContent = num1
+            } else if (nextNumFlag){
+                num2 = (parseFloat(num2)/100).toString()
+                screen.textContent = num2
+            }
+            break;
+        case "+/-":
+            if (!nextNumFlag){
+                num1 = (-parseFloat(num1)).toString()
+                screen.textContent = num1
+            } else if (nextNumFlag){
+                num2 = (-parseFloat(num2)).toString()
+                screen.textContent = num2
+                console.log(num2)
+            }
+            break;
         case "+":
             nextNumFlag = true
             operator = "+"
@@ -150,15 +169,11 @@ function operate(event){
             }
             break;
     }
-    if (num1){
-        num1 = parseFloat(num1)
-    }
-
-    if (num2){
-        num2 = parseFloat(num2)
-    }
 
     if (equalPressed){
+        num1 = parseFloat(num1)
+        num2 = parseFloat(num2)
+
         switch(operator){
             case "+":
                 answer = num1 + num2
@@ -177,6 +192,7 @@ function operate(event){
                 }
                 break;
         }
+        console.log(`num1: ${num1}, num2: ${num2}, answer: ${answer}`)
         screen.textContent = answer
         equalPressed = false
         nextNumFlag = false
