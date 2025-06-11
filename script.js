@@ -129,7 +129,6 @@ function operate(event){
             } else if (nextNumFlag){
                 num2 = (-parseFloat(num2)).toString()
                 screen.textContent = num2
-                console.log(num2)
             }
             break;
         case "+":
@@ -192,7 +191,6 @@ function operate(event){
                 }
                 break;
         }
-        console.log(`num1: ${num1}, num2: ${num2}, answer: ${answer}`)
         screen.textContent = answer
         equalPressed = false
         nextNumFlag = false
