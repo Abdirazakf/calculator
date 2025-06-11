@@ -194,7 +194,7 @@ function operate(event){
         screen.textContent = answer
         equalPressed = false
         nextNumFlag = false
-        num1 = ""
+        num1 = answer.toString()
         num2 = ""
     }
 }
